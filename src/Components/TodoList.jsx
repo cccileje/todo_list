@@ -1,9 +1,10 @@
 import React, { useState } from 'react';
 import './TodoList.css';
 
+const [todos, setTodos] = useState([]);
+const [headingInput, setheadingInput] = useState('');
+const [listInputs, setListInputs] = useState({});
 const TodoList = () => {
-  
-
   return (
     <>
       <div className="todo-container">
