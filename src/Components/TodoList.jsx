@@ -26,6 +26,12 @@ const TodoList = () => {
     const handleListInputChange = (index, value) => {
         setListInputs({ ...listInputs, [index]: value }) // update the listInputs state for the given index
     };
+    // Function to delete list
+    const handleDeleteTodo = (index) => {
+        const newTodos = [...todos]; // create copy of current todos array
+        newTodos.splice(index, 1); // remove todo list at specified index
+        setTodos(newTodos); // update state with new todo array (with specified todo list removed)
+    };
 
     return (
         <>
