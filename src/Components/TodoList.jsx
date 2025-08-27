@@ -17,7 +17,7 @@ const TodoList = () => {
     const handleAddList = (index) => {
         if (listInputs[index] && listInputs[index].trim !== '') { // check for empty input
             const newTodos = [...todos]; // copy exisitng todos array
-            newTodos[index].list.push(listInputs[index]); // add new item to correct list (based on index)
+            newTodos[index].lists.push(listInputs[index]); // add new item to correct list (based on index)
             setTodos(newTodos); // update the todos state with the new list item
             setListInputs({ ...listInputs, [index]: ''}); // reset input field for that index
         }
@@ -47,16 +47,18 @@ const TodoList = () => {
                     <div key={index} className='todo-card'>
                         <div className='heading_todo'>
                             <h3>{todo.heading}</h3> {/* Display heading here */}
-                            <ul>
-                                {/* iterate over each list item inside the current todo */}
-                                {todo.lists.map((list, listIndex) => (
-                                    <li key={listIndex} className='todo_inside_list'>
-                                        {/* display text content of the list item */}
-                                        <p>{list}</p>
-                                    </li>
-                                ))}
-                            </ul>
-                            <div className='add_list'>
+                            <button className='delete-button-heading' onClick={() => handleDeleteTodo(index)}>Delete Heading</button>
+                        </div>
+                        <ul>
+                            {/* iterate over each list item inside the current todo */}
+                            {todo.lists.map((list, listIndex) => (
+                                <li key={listIndex} className='todo_inside_list'>
+                                    {/* display text content of the list item */}
+                                    <p>{list}</p>
+                                </li>
+                            ))}
+                        </ul>
+                        <div className='add_list'>
                                 {/* input field for adding items under specific heading */}
                                 <input
                                     type='text'
@@ -67,8 +69,6 @@ const TodoList = () => {
                                 {/* button to add the list item to the corresponding heading */}
                                 <button className='add-list-button' onClick={() => handleAddList(index)}>Add List</button>
                             </div>
-                            <button className='delete-button-heading' onClick={() => handleDeleteTodo(index)}>Delete Heading</button>
-                        </div>
                     </div>
                 ))}
             </div>
