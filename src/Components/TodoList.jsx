@@ -30,6 +30,13 @@ const handleListInputChange = (index, value) => {
     setListInputs({...listInputs, [index]: value});
 };
 
+// Function to delete lists
+const handleDeleteTodo = (index) => {
+    const newTodos = [...todos]; // copy todos array
+    newTodos.splice(index, 1); // remove one list from array at specified index
+    setTodos(newTodos); // update todos array
+};
+
     return (
         <>
             <div className="todo-container">
